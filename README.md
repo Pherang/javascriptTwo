@@ -1,2 +1,2 @@
 # javascriptTwo
-# Some possibly intermediate algorithms that I worked on.
+# Some intermediate algorithms that I worked on.
