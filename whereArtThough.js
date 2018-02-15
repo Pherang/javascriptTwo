@@ -1,3 +1,4 @@
+
 function whatIsInAName(collection, source) {
   // What's in a name?
   var arr = [];
@@ -20,13 +21,13 @@ function whatIsInAName(collection, source) {
 
     for (j=0; j < sourceKeys.length; j++) {
 
-      /* Let's see if this object even has the key.
+      /* Let's see if this object even has the key at j.
          if it does then we can check it's value by using the key to find it's value in the original source object we can also use that to find it in the original collection[i] object.
          If it doesn't contain the value then we ignore it.
          */
 
        if (!collection[i].hasOwnProperty(sourceKeys[j])) {
-         console.log(sourceKeys[j] + " Not in here " + JSON.stringify(collection[i]));
+         console.log(sourceKeys[j] + " Not in " + JSON.stringify(collection[i]));
          // If the key isn't in the object exit this inner loop. The object's disqualified.
          keyNot = true;
          break;
@@ -40,7 +41,7 @@ function whatIsInAName(collection, source) {
          }
 
        }
-
+      console.log("Loop made it all the way to the end because " + JSON.stringify(collection[i]));
     } // if it passes our error checking system it must be the same we'll add it to the array.
     if (keyNot == false) {
       arr.push(collection[i]);
