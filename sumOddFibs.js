@@ -3,18 +3,21 @@
 
 */
 
-
 function sumFibs(num) {
   /* Fibonacci is 1, 1, 2, 3, 5, 8   n=(n-1) + (n-2)
      Odd numbers divided by 2 results in a remainder.
   */
   var oddFibs;
   var result = 0;
-  function reducer (acc,curr) { return acc + curr;}
-  
-  
+  function reducer (acc,curr) {
+
+    return (curr % 2 != 0 ? acc + curr : 0);
+
+  }
+
+
   //function findFibs (num){
-    
+
     oddFibs = [1,1];
     /* If the current fibonacci number is odd then add it.
     That means if fibnum/2 Remainder 1 then add that number
@@ -25,27 +28,28 @@ function sumFibs(num) {
     if (num == 2) {
       return 2;
     } else {
-      
+
       for (i = 2; i < num; i++) {
-        
-        if (oddFibs[i-1] % 2 > 0){
-          oddFibs[i] += oddFibs[i-1];
-        }
-        if (oddFibs[i-2] % 2 > 0) {
-          oddFibs[i] += oddFibs[i-2];
-        }
+        oddFibs[i] = oddFibs[i-1] +oddFibs[i-2];
       }
+
+      }
+      console.log("The array is " + oddFibs);
       result = oddFibs.reduce(reducer, 0);
       console.log("The result is " + result);
-      
-      
-    }
-    
-    
-    
+
+
+
+
+
+
   //}
-   
+
   return result;
 }
 
-sumFibs(4);
+
+
+var jo = document.getElementById("answer");
+
+jo.textContent = sumFibs(10);
