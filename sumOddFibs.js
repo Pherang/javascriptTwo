@@ -2,7 +2,6 @@
 /* Remember the goal, just add the odd fibonacci numbers.
 
 */
-
 function sumFibs(num) {
   /* Fibonacci is 1, 1, 2, 3, 5, 8   n=(n-1) + (n-2)
      Odd numbers divided by 2 results in a remainder.
@@ -10,13 +9,11 @@ function sumFibs(num) {
   var oddFibs;
   var result = 0;
   function reducer (acc,curr) {
-
-    return (curr % 2 != 0 ? acc + curr : 0);
-
+    console.log("Acc is " + acc);
+    console.log("Curr is " + curr);
+    console.log("The return value is " +(curr % 2 != 0 ? acc + curr : acc));
+      return (curr % 2 != 0 ? acc + curr : acc);
   }
-
-
-  //function findFibs (num){
 
     oddFibs = [1,1];
     /* If the current fibonacci number is odd then add it.
@@ -31,6 +28,10 @@ function sumFibs(num) {
 
       for (i = 2; i < num; i++) {
         oddFibs[i] = oddFibs[i-1] +oddFibs[i-2];
+        if (oddFibs[i] > num) {
+          oddFibs.pop();
+          break;
+        }
       }
 
       }
@@ -39,11 +40,6 @@ function sumFibs(num) {
       console.log("The result is " + result);
 
 
-
-
-
-
-  //}
 
   return result;
 }
