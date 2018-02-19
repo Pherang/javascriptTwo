@@ -10,49 +10,38 @@ function sumPrimes(num) {
   function reducer (acc, curr) {
    return acc+curr;
   }
-
+  
   if (num > 3) {
-
+    
     primeNums.push(2);
     primeNums.push(3);
       for (i = 4; i <= num; i++) {
         notPrime = false;     // Reset this flag here instead of at the end. Loop kept not adding 5 as a prime number since it's the first prime after 3.
-        console.log("Testing " + i);
+        
         if (i % 2 == 0 || i % 3 == 0 ){
-          console.log("Divisible by two or three");
-
+         // Do nothing.
         } else {
-            console.log("Made it to check primes");
+            
             for (k=1; (6*k-1) <= i; k++ ) {
               primeHigh = (6*k)-1;
               primeLow = (6*k)+1;
-              console.log("Testing " + i + " against " + primeHigh + " " + primeLow);
-
-
+            
               if ( (i != primeHigh && i != primeLow) && (i % primeHigh == 0 || i % primeLow == 0)) {
-                console.log("Not a prime " + i + " mod " + primeHigh + " is " + (i % primeHigh));
-                console.log("Not a prime " + i + " mod " + primeLow + " is " + (i % primeLow));
+                //Not a prime so set the flag to be true.
                 notPrime = true;
                 break;
               }
 
             }
               if (!notPrime) {
-                console.log("Pushing onto array " + i);
+                // If notPrime is false, it is a prime so push it onto the array.
                 primeNums.push(i);
               }
-
-
         }
       }
   }
 
-    console.log(primeNums);
     var total = primeNums.reduce(reducer,0);
-    console.log("The total for " + num + " is " + total);
     return total;
 
 }
-var answerBox = document.getElementById("answer");
-
-answerBox.textContent = sumPrimes(977);
