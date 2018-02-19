@@ -16,7 +16,24 @@ function smallestCommons(arr) {
   
   /* The lcm formula can be used recursively to find the lcm of multiple numbers.
       lcm (a,b,c) = lcm (a, lcm (b,c)) */
-  
+ 
+  /* Pseudo code for a recursive LCM function. 
+  lcm (arguments) {
+
+   if (arguments == 2) {
+     a = arguments[0]
+     b = arguments[1]
+     a * b / gcd(a,b)
+   return the result;
+else { 
+
+           get the last two arguments and lcm them
+           and also send the rest of the arguments to the next function call.
+           lcm(arguments minus the last two, lcm(arguments(last), arugments(secondlast))
+     
+       }
+
+ } */
   
   
   
