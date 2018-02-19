@@ -12,10 +12,10 @@ function sumPrimes(num) {
   }
     
   if (num > 3) {
-    
-      for (i = 4; i <= 10; i++) {
-        primeNums.push(2);
-        primeNums.push(3);
+    primeNums.push(2);
+    primeNums.push(3);
+      for (i = 4; i <= num; i++) {
+        
         console.log("Testing " + i);
         if (i % 2 == 0 || i % 3 == 0 ){
           console.log("Divisible by two or three");
@@ -30,22 +30,27 @@ function sumPrimes(num) {
              
               if ( (i != primeHigh && i != primeLow) && (i % primeHigh == 0 || i % primeLow == 0)) {
                 console.log("Not a prime " + i + " mod " + primeHigh + " is " + (i % primeHigh));
-                console.log("Not a prime " + i + " mod " + primeLow + " is " + (i % primeLow));     
+                console.log("Not a prime " + i + " mod " + primeLow + " is " + (i % primeLow));
+                notPrime = true;
                 break;
-              } else { 
-                  
-                console.log("Pushing onto array " + i);
-                primeNums.push(i);}
-              
+              } 
+            
             }
-      
-          }
+              if (!notPrime) {
+                console.log("Pushing onto array " + i);
+                primeNums.push(i);
+              }
+                notPrime = false;           
+            
         }
-  }  
+      }
+  }
+ 
+    console.log(primeNums);
     var total = primeNums.reduce(reducer,0);
     console.log("The total for " + num + " is " + total);
     return total;
   
 }
 
-sumPrimes(10);
+sumPrimes(977);
