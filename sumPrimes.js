@@ -1,45 +1,51 @@
-
 function sumPrimes(num) {
 
   /* Any even number greater than 2 is not a prime
      Any odd number divisible by 3,5,7 and greater than 7 is not a prime.
   */
-
+  var primeHigh;
+  var primeLow;
   var primeNums = [];
-
+  var notPrime = true;
   function reducer (acc, curr) {
    return acc+curr;
   }
-
-  for (i=2; i < num; i++ ) {for (i=4; i < num; i++ ) {
     
-    // All prime numbers can be found by testing 6*k +
-    // Test i to see if it is divisible by any a = 6k + 1 <= sqrt()
-    // 6K +- 1 <= squareroot of Math.round(Math.sqrt(i))
+  if (num > 3) {
     
-    
-      for (j=1; 6*j + 1 <= Math.round(Math.sqrt(i)); j++) {
-    
-      console.log("Testing prime " + 6*j-1);
-      console.log("Testing prime " + 6*j+1);
-      // Otherwise it's probably prime.
-    }
-      primeNums.push(i);
-
-
-
-      // Otherwise it's probably prime.
-      primeNums.push(i);
-
-
-
-  }
-  var total = primeNums.reduce(reducer,0);
-
-
-  return total;
+      for (i = 4; i <= 10; i++) {
+        primeNums.push(2);
+        primeNums.push(3);
+        console.log("Testing " + i);
+        if (i % 2 == 0 || i % 3 == 0 ){
+          console.log("Divisible by two or three");
+          
+        } else {
+            console.log("Made it to check primes");
+            for (k=1; (6*k-1) <= i; k++ ) {
+              primeHigh = (6*k)-1;
+              primeLow = (6*k)+1;
+              console.log("Testing " + i + " against " + primeHigh + " " + primeLow);
+            
+             
+              if ( (i != primeHigh && i != primeLow) && (i % primeHigh == 0 || i % primeLow == 0)) {
+                console.log("Not a prime " + i + " mod " + primeHigh + " is " + (i % primeHigh));
+                console.log("Not a prime " + i + " mod " + primeLow + " is " + (i % primeLow));     
+                break;
+              } else { 
+                  
+                console.log("Pushing onto array " + i);
+                primeNums.push(i);}
+              
+            }
+      
+          }
+        }
+  }  
+    var total = primeNums.reduce(reducer,0);
+    console.log("The total for " + num + " is " + total);
+    return total;
+  
 }
 
-var result = document.getElementById("answer");
-
-result.textContent = sumPrimes(977);
+sumPrimes(10);
