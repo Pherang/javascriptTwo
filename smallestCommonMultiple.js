@@ -1,70 +1,72 @@
-
 function smallestCommons(arr) {
-
-  /* Need to find smallest common multiple between two numbers AND
-  all the numbers in between
-  */
 
 	/* Need to find all the numbers in between arr[0] and arr[1].
 	They also may not be in sequential order arr[0] > arr[1] is
      possible.
   */
+	var nums = [];
 
-  /* Reading up on math, could use  the lcm (a,b) = a * b / gcd ( a,b) formula find it.
-    Will also need the gcd formula which is gcd(a,b) = gcd(a-b,b)
-  */
+	// Find all the numbers bewteen arr[0] and arr[1]
+	if (arr[0] >= arr[1]) {
+		nums.push(arr[1]);
+		console.log("Adding to array: " + (nums[nums.length-1]));
+		while (nums[nums.length-1] < arr[0]){
+			nums.push((nums[nums.length-1]+1));
+			console.log("Adding to array: " + (nums[nums.length-1]));
+			// The smaller number should be the first number.
+		}
+	} else if (arr[0] <= arr[1]) {
+			nums.push(arr[0]);
 
-  	/* The lcm formula can be used recursively to find the lcm of multiple numbers.
-    lcm (a,b,c) = lcm (a, lcm (b,c)) */
-		// Lowest Common Multiple takes an array of numbers
-		// Checks to make sure there are only two numbers
-		//
+			while (nums[nums.length-1] < arr[1]){
+				nums.push((nums[nums.length-1]+1));
+				console.log("Adding to array: " + (nums[nums.length-1]));
+			}
+	}console.log("The array is " + nums);
+
+
 		function lcm(numbers) {
-					var a;
-					var b;
-					var remainNumbers;
-					// Base Case.
+			var a;
+			var b;
+			var lastTwo = [];
 
-			    if (numbers.length == 2{
+			// Base Case.
+	    if (numbers.length == 2){
+				return numbers[0] * numbers[1] / gcd(numbers[0],numbers[1]);
 
-						return numbers[0] * numbers[1] / gcd(numbers[0],numbers[1]);
-
-			    } else if (numbers.length > 2) {
-							// Need to split the array up or slice it.
-							a = numbers[numbers.length-1];
-							b = numbers[numbers.length-2];
-							return lcm(reducedarray, lcm(a,b));
-			    }
-
-			    else return null;
-
-			  }
-
-
-				function gcd(a,b) {
-
-    console.log(a + " vs " + b);
-    if (a === b) {
-      //Return the Greatest Common Denominator.
-      return a;
-    } else if (a > b) {
-        return gcd(a-b,b);
-    } else if (a < b) {
-        return gcd(a,b-a);
-    }
-    else return null;
-  }
+	    } else if (numbers.length > 2) {
+					// Need to split the array up or slice it.
+					lastTwo.push(numbers.pop());
+					console.log("A is " + lastTwo[0]);
+					lastTwo.push(numbers.pop());
+					console.log("B is " + lastTwo[1]);
+					return lcm( numbers.concat(lcm(lastTwo)) );
+	    }
+	    else return null;
+		}
 
 
-  	var x = gcd(500,120);
+		function gcd(a,b) {
+			console.log("RUnnung " + a + " vs " + b );
+	    if (a === b) {
+	      //Return the Greatest Common Denominator.
+	      return a;
+	    } //else if ( a < 0 || b < 0)
+			else if (a > b) {
+	        return gcd(a-b,b);
+	    } else if (a < b) {
+	        return gcd(a,b-a);
+	    }
+	    else return 1;
+  	}
+
+		var x = lcm(nums);
+  	//var x = gcd(500,120);
   	console.log(x);
   	return x;
-   	return arr;
+   	//return arr;
 }
-
-
-
 
 var answerBox = document.getElementById("answer");
 
-answerBox.textContent = smallestCommons([1,5]);
+answerBox.textContent = smallestCommons([1,3]);
