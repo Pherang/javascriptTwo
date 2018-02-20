@@ -8,18 +8,18 @@ function smallestCommons(arr) {
 
 	// Find all the numbers bewteen arr[0] and arr[1]
 	if (arr[0] >= arr[1]) {
-		nums.push(arr[1]);
+		nums.push(arr[0]);
 		console.log("Adding to array: " + (nums[nums.length-1]));
-		while (nums[nums.length-1] < arr[0]){
-			nums.push((nums[nums.length-1]+1));
+		while (nums[nums.length-1] > arr[1]){
+			nums.push((nums[nums.length-1]-1));
 			console.log("Adding to array: " + (nums[nums.length-1]));
 			// The smaller number should be the first number.
 		}
 	} else if (arr[0] <= arr[1]) {
-			nums.push(arr[0]);
+			nums.push(arr[1]);
 
-			while (nums[nums.length-1] < arr[1]){
-				nums.push((nums[nums.length-1]+1));
+			while (nums[nums.length-1] > arr[0]){
+				nums.push((nums[nums.length-1]-1));
 				console.log("Adding to array: " + (nums[nums.length-1]));
 			}
 	}console.log("The array is " + nums);
@@ -47,11 +47,14 @@ function smallestCommons(arr) {
 
 
 		function gcd(a,b) {
-			console.log("RUnnung " + a + " vs " + b );
+			console.log("Running " + a + " vs " + b );
 	    if (a === b) {
-	      //Return the Greatest Common Denominator.
+	      // Return the Greatest Common Denominator.
 	      return a;
-	    } //else if ( a < 0 || b < 0)
+				// Exits function if common denominator 1 is found.
+	    } else if ( a == 1 || b == 1) {
+				return 1;
+			}
 			else if (a > b) {
 	        return gcd(a-b,b);
 	    } else if (a < b) {
@@ -69,4 +72,4 @@ function smallestCommons(arr) {
 
 var answerBox = document.getElementById("answer");
 
-answerBox.textContent = smallestCommons([1,3]);
+answerBox.textContent = smallestCommons([1,13]);
