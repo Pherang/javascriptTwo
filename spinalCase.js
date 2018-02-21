@@ -11,9 +11,6 @@ function spinalCase(str) {
     if (p1 && p2) {
       return p1 + "-" + p2.toLowerCase();
     }
-    if (p2) {
-      return "-";
-    }
     if (p3) {
       return "-";
     }
