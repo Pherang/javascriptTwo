@@ -1,2 +1,2 @@
 # javascriptTwo
-# Some intermediate algorithms that I worked on.
+# Some intermediate algorithms from Freecodecamp that I worked on.
