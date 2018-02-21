@@ -1,22 +1,31 @@
-
 function spinalCase(str) {
   // "It's such a fine line between stupid, and clever."
   // --David St. Hubbins
   
-  var woot = str;
-  function processStr(match,p1,p2,offset,fullstring){
-  console.log("This was called");
-    console.log(offset);
-    console.log("Hello");
-    return "Z";
+  function createSpinal(match,p1,p2,p3,p4,offset,fullStr) {
     
-  
-  }  
+    console.log("Found " + match);
+    console.log("p1 is " + p1);
+    console.log("p2 is " + p2);
     
-  var spinal = woot.replace(/([A-Z])([ _])/g, processStr);
-  console.log("Spinal is " + spinal);
+    if (p1 && p2) {
+      return p1 + "-" + p2.toLowerCase();
+    }
+    if (p2) {
+      return "-";
+    }
+    if (p3) {
+      return "-";
+    }
+    if (p4) {
+      return p4.toLowerCase();
+    }
+  }
   
-  return spinal;
+  var newStr = str.replace(/([a-z])([A-Z])|([ _])|([A-Z])/g, createSpinal);
+  
+  
+  return newStr;
 }
 
-spinalCase('AllThis Is Spinal Tap');
+spinalCase('This Is SpinalTap');
