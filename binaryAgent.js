@@ -13,39 +13,32 @@ function binaryAgent(str) {
   // Create a function to check each binary number and convert to character.
   // If a digit in binary is a 1 it should map to the corresponding decimal number
   // 1000000 = 128
-  function findCode(element) {
+    function findChar(element){
+	    var converted = [];
+			console.log(element);
+	    converted = element.split("");
+	    var charCode = converted.reduce(function(a,b,index) {
+				var z = binaryMap[index];
+	       if (b == 1) {
+	         //console.log("The answer is " acc + Number.parseInt(binaryMap[index]));
 
+	         return Number.parseInt(a + z);
 
-  }
-  function findChar(element){
-    var converted = [];
-		console.log(element);
-    converted = element.split("");
+	       } else {
+					 return Number.parseInt(a);
+				 }
 
-    var charCode = converted.reduce(function(a,b,index) {
-			var z = Number.parseInt(binaryMap[index],10);
-       if (Number.parseInt(b) == 1) {
-         //console.log("The answer is " acc + Number.parseInt(binaryMap[index]));
-
-         console.log("Z is " + z);
-				 console.log("Total is " + (a + z));
-         return a + z;
-
-       } else {
-				 return a;
-			 }
-
-    });
-		var y = Number.parseInt(charCode);
-    console.log("Character code is " + y);
+	    });
+			// Add the charcode to an array the will be joined and returned once the entire array is parsed.
+			 words.push(String.fromCharCode(charCode));
 
   }
 
   // Entire string of binary numbers has been split into elements in an array. e.g. [01000000,0101010]
-  bins.forEach(findChar);
-
-
-  return bins;
+	bins.forEach(findChar);
+  words = words.join("");
+	console.log(words);
+  return words;
 }
 
 
