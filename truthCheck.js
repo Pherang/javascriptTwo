@@ -7,21 +7,26 @@ function truthCheck(collection, pre) {
      Javascript has Array methods that can check elements of the array including some()
   */
 
-
   /*
-
+		Function to test truthyness of given object.
 
   */
+	function isTruthy(element) {
 
-  return collection.every(isTruthy);
+		return (element.hasOwnProperty(this) && element[this]);
+
+	}
+
+	// Array.prototype.every() used to check each element to make sure they ALL pass the test.
+  return collection.every(isTruthy,pre);
 
 
 
 }
 
-truthCheck([{"user": "Tinky-Winky", "sex": "male"}, {"user": "Dipsy", "sex": "male"}, {"user": "Laa-Laa", "sex": "female"}, {"user": "Po", "sex": "female"}], "sex");
+
 
 
 var answerBox = document.getElementById("answer");
 
-answerBox.textContent = truthCheck([{"user": "Tinky-Winky", "sex": "male"}, {"user": "Dipsy", "sex": "male"}, {"user": "Laa-Laa", "sex": "female"}, {"user": "Po", "sex": "female"}], "sex");
+answerBox.textContent = truthCheck([{"user": "Tinky-Winky", "sex": null}, {"user": "Dipsy", "sex": "male"}, {"user": "Laa-Laa", "sex": "female"}, {"user": "Po", "sex": "female"}], "sex");
