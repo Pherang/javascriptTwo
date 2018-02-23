@@ -25,37 +25,37 @@ function myReplace(str, before, after) {
   // Join the array back into a sentence.
   
   for (i = 0; i < words.length; i++) {
-    
+
     if (words[i] == "spellngi") {
-      str = "This has a spelling error";
-      return str;
-    } else {
-        if (words[i] == before) {
-          console.log("Found the word " + words[i]);
+      return "This has a spelling error";
+    }
 
-          /* Let's test if before has it's first letter as upper case using a regular expression.
-              If it is an upper case then the after word's first letter is converted to uppercase.
-              If it is lower case then the after word's first letter is converted.
-              We don't bother checking to see if it's already lower case becase we must match the before word's capitalization.
-        */
-          var upperTest = /^[A-Z]/;
-          var lowerTest = /^[a-z]/;
+    if (words[i] == before) {
+      console.log("Found the word " + words[i]);
 
-          if (upperTest.test(words[i])) {
-            newword = convUpper();
-            console.log("After word should be " + newword);
-            
-          } else if (lowerTest.test(words[i])) {
-            newword = convLower();
-            console.log("After word should be " + newword);
-          }
-          
-          words[i] = newword;
-        }
+      /*
+        Let's test if before has it's first letter as upper case using a regular expression.
+        If it is an upper case then the after word's first letter is converted to uppercase.
+        If it is lower case then the after word's first letter is converted.
+        We don't bother checking to see if it's already lower case becase we must match the before word's capitalization.
+      */
+      var upperTest = /^[A-Z]/;
+      var lowerTest = /^[a-z]/;
+
+      if (upperTest.test(words[i])) {
+        newword = convUpper();
+        console.log("After word should be " + newword);
+      } else if (lowerTest.test(words[i])) {
+        newword = convLower();
+        console.log("After word should be " + newword);
       }
-    
-  } str = words.join(" ");
-   
+
+      words[i] = newword;
+    }
+  }
+
+  str = words.join(" ");
+
   return str;
 }
 
